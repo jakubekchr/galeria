@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    int a = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +26,22 @@ public class MainActivity extends AppCompatActivity {
         Button dalej = findViewById(R.id.dalej);
         Button wstecz = findViewById((R.id.wstecz));
         ImageView zdj = findViewById(R.id.zdj);
+        int zdjecia[] = new int[]{R.drawable.images,R.drawable.img1, R.drawable.img2,R.drawable.img3,R.drawable.img4};
 
         dalej.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zdj.setImageResource(R.drawable.img1);
+                a++;
+                zdj.setImageResource(zdjecia[a]);
+                if (zdjecia.length < zdjecia[a]){
+                    a =0;
+                }
+            }
+        });
+        wstecz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zdj.setImageResource(zdjecia[a--]);
             }
         });
 
